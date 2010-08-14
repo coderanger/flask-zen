@@ -36,14 +36,14 @@ configure both::
     manager.add_command('test', Test())
     manager.add_command('zen', ZenTest())
     
-    if __name__ == "__main__":
+    if __name__ == '__main__':
         manager.run()
     
 
 Any of the command-line options below can be overridden using a keyword
 argument to the ``Test`` or ``ZenTest`` constructor::
     
-    manager.add_command('test', ZenTest(nocolor=True, ui='none'))
+    manager.add_command('zen', ZenTest(nocolor=True, ui='none'))
     
 
 Usage
@@ -60,7 +60,7 @@ command will run the normal PyZen continuous tester.
 ``-v``, ``--verbosity`` : *default: 1*
     Test runner verbosity.
 
-``--no-color`` : *default: False*
+``--no-color`` : *flag, default: False*
     Disable colored output.
 
 ``-u``, ``--ui`` : *only for ZenTest, default: autodetect*
