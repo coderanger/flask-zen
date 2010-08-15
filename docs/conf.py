@@ -99,7 +99,7 @@ html_theme = 'flask_small'
 # documentation.
 html_theme_options = {
     'index_logo': 'logo.png',
-    'github_fork': 'nkantrowitz/flask-zen',
+    'github_fork': 'coderanger/flask-zen',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

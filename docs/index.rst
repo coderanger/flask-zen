@@ -20,7 +20,7 @@ or alternatively if you have `pip` installed::
     $ pip install Flask-Zen
 
 .. _Flask: http://flask.pocoo.org/
-.. _PyZen: http://pypi.python.org/pypi/pyzen/
+.. _PyZen: http://pypi.python.org/pypi/PyZen/
 .. _Flask-Script: http://pypi.python.org/pypi/Flask-Script
 
 Configuration
