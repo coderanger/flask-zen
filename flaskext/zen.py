@@ -4,6 +4,7 @@ import inspect
 import os.path
 import fnmatch
 
+import flask
 from flaskext.script import Command, Option
 
 from pyzen.core import main
@@ -59,8 +60,8 @@ class Test(Command):
             Option('--nocolor', action='store_true', default=self.default_nocolor, help='Disable colored output'),
         ]
     
-    def run(self, app, pattern, start_dir, verbosity, nocolor):
-        result = run_tests(app, pattern, start_dir, verbosity, nocolor)
+    def run(self, pattern, start_dir, verbosity, nocolor):
+        result = run_tests(flask.current_app, pattern, start_dir, verbosity, nocolor)
         if result.failures or result.errors:
             sys.exit(1)
 
@@ -77,8 +78,8 @@ class ZenTest(Test):
         options.append(Option('-u', '--ui', default=self.default_ui, help='Force the use of the given PyZen UI'))
         return options
     
-    def run(self, app, pattern, start_dir, verbosity, ui, nocolor):
+    def run(self, pattern, start_dir, verbosity, ui, nocolor):
         try:
-            main(ui, run_tests, app, pattern, start_dir, verbosity, nocolor)
+            main(ui, run_tests, flask.current_app, pattern, start_dir, verbosity, nocolor)
         except KeyboardInterrupt:
             pass
