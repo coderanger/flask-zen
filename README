@@ -1,6 +1,8 @@
 Flask-Zen
 =========
 
+.. module:: flaskext.zen
+
 Flask-Zen is an extension to `Flask`_ that allows you to use `PyZen`_ via
 `Flask-Script`_ commands. Both a simple test runner command and the standard
 PyZen auto-runner are provided. You can install the requirements from PyPI
@@ -18,7 +20,7 @@ or alternatively if you have `pip` installed::
     $ pip install Flask-Zen
 
 .. _Flask: http://flask.pocoo.org/
-.. _PyZen: http://pypi.python.org/pypi/pyzen/
+.. _PyZen: http://pypi.python.org/pypi/PyZen/
 .. _Flask-Script: http://pypi.python.org/pypi/Flask-Script
 
 Configuration
@@ -58,7 +60,7 @@ command will run the normal PyZen continuous tester.
 ``-v``, ``--verbosity`` : *default: 1*
     Test runner verbosity.
 
-``--no-color`` : *flag, default: False*
+``--nocolor`` : *flag, default: False*
     Disable colored output.
 
 ``-u``, ``--ui`` : *only for ZenTest, default: autodetect*
