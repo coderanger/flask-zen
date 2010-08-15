@@ -31,5 +31,5 @@ setup(
         'Programming Language :: Python',
     ],
     zip_safe = False,
-    install_reqires=['Flask-Script', 'PyZen'],
+    install_requires=['Flask-Script', 'PyZen'],
 )
