@@ -60,7 +60,7 @@ command will run the normal PyZen continuous tester.
 ``-v``, ``--verbosity`` : *default: 1*
     Test runner verbosity.
 
-``--no-color`` : *flag, default: False*
+``--nocolor`` : *flag, default: False*
     Disable colored output.
 
 ``-u``, ``--ui`` : *only for ZenTest, default: autodetect*
