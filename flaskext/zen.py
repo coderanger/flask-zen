@@ -5,7 +5,7 @@ import os.path
 import fnmatch
 
 import flask
-from flaskext.script import Command, Option
+from flask.ext.script import Command, Option
 
 from pyzen.core import main
 from pyzen.runner import get_test_runner
@@ -21,7 +21,7 @@ except ImportError:
 __all__ = ['Test', 'ZenTest']
 
 class ZenTestLoader(TestLoader):
-    
+
     def _match_path(self, path, full_path, pattern):
         for pat in pattern.split(';'):
             if fnmatch.fnmatch(full_path, pat):
@@ -37,7 +37,7 @@ def run_tests(app, pattern, start_dir, verbosity, nocolor):
 
 class Test(Command):
     """Run app tests."""
-    
+
     def __init__(self, pattern='*/tests/*.py;*/tests.py', start_dir=None, verbosity=1, nocolor=False):
         if start_dir is None:
             # Find the file that called this constructor and use its directory
@@ -51,7 +51,7 @@ class Test(Command):
         self.default_start_dir = start_dir
         self.default_verbosity = verbosity
         self.default_nocolor = nocolor
-    
+
     def get_options(self):
         return [
             Option('-p', '--pattern', dest='pattern', default=self.default_pattern),
@@ -59,7 +59,7 @@ class Test(Command):
             Option('-v', '--verbosity', dest='verbosity', default=self.default_verbosity),
             Option('--nocolor', action='store_true', default=self.default_nocolor, help='Disable colored output'),
         ]
-    
+
     def run(self, pattern, start_dir, verbosity, nocolor):
         result = run_tests(flask.current_app, pattern, start_dir, verbosity, nocolor)
         if result.failures or result.errors:
@@ -68,16 +68,16 @@ class Test(Command):
 
 class ZenTest(Test):
     """Run app tests continuously."""
-    
+
     def __init__(self, ui=None, **kwargs):
         super(ZenTest, self).__init__(**kwargs)
         self.default_ui = ui
-    
+
     def get_options(self):
         options = super(ZenTest, self).get_options()
         options.append(Option('-u', '--ui', default=self.default_ui, help='Force the use of the given PyZen UI'))
         return options
-    
+
     def run(self, pattern, start_dir, verbosity, ui, nocolor):
         try:
             main(ui, run_tests, flask.current_app, pattern, start_dir, verbosity, nocolor)
