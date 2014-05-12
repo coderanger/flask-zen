@@ -27,24 +27,24 @@ Configuration
 -------------
 PyZen exposes two Flask-Script commands: ``Test`` and ``ZenTest``. To
 configure both::
-    
-    from flaskext.script import Manager
-    from flaskext.zen import Test, ZenTest
-    
+
+    from flask.ext.script import Manager
+    from flask.ext.zen import Test, ZenTest
+
     manager = Manager(app)
-    
+
     manager.add_command('test', Test())
     manager.add_command('zen', ZenTest())
-    
+
     if __name__ == '__main__':
         manager.run()
-    
+
 
 Any of the command-line options below can be overridden using a keyword
 argument to the ``Test`` or ``ZenTest`` constructor::
-    
+
     manager.add_command('zen', ZenTest(nocolor=True, ui='none'))
-    
+
 
 Usage
 -----
@@ -53,7 +53,7 @@ command will run the normal PyZen continuous tester.
 
 ``-s``, ``--start-dir`` : *default: location of manage.py*
     Base directory for test discovery.
-    
+
 ``-p``, ``--pattern`` : *default: \*/tests/\*.py;\*/tests.py*
     Semicolon separated file globs to use for loading tests.
 
